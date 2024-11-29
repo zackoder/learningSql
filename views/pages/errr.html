@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ERROR</title>
-</head>
-<body>
-  
-            <center><h2>Error {{.ErrorNum}} : {{.ErrorType}}</h2></center>
-            <!-- <form action="/"> -->
-                <button class="go-back-error" type="submit" onclick="window.history.back()">Go Back</button>
-            <!-- </form> -->
-      
-</body>
-</html>
+{{define "title"}}  ERROR {{end}}
+{{define "content"}} 
+ 
+<center><h2>Error {{.ErrorNum}} : {{.ErrorType}}</h2></center>
+<!-- <form action="/"> -->
+    <button class="go-back-error" type="submit" onclick="window.history.back()">Go Back</button>
+<!-- </form> -->
+
+{{end}}
