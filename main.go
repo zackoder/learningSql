@@ -3,58 +3,28 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"net/http"
+
+	"forum/controllers"
+	"forum/models"
+
 	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	db, err := sql.Open("sqlite3", "./data.db")
-	if err != nil {
-		fmt.Println(err)
+	http.HandleFunc("/", controllers.Home)
+	db, err_db := sql.Open("sqlite3", "./data.db")
+	if err_db != nil {
+		fmt.Println(err_db)
 		return
 	}
 	defer db.Close()
-	Create_table(db)
-	
-}
+	models.Create_table(db)
 
-func Create_table(db *sql.DB){
-	query := `
-	CREATE TABLE IF NOT EXISTS users (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		name TEXT NOT NULL,
-		username TEXT NOT NULL UNIQUE,
-		email TEXT NOT NULL UNIQUE,
-		creation_date TIMESTAMP DEFAUL CURRENT_TIMESTAMP
-	);
-
-	CREATE TABLE IF NOT EXISTS posts (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		user_id INTEGER NOT NULL,
-		title TEXT NOT NULL,
-		content TEXT,
-		creation_date TIMESTAMP DEFAUL CURRENT_TIMESTAMP,
-		FOREIGN KEY(user_id) REFERENCES users(id)
- 	);
-
-	CREATE TABLE IF NOT EXISTS likes (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		user_id INTEGER NOT NULL,
-		post_id INTEGER NOT NULL,
-		like BOOLEAN,
-		FOREIGN KEY(user_id) REFERENCES users(id),
-		FOREIGN KEY(post_id) REFERENCES posts(id)
-	);
-	`
-	_,err := db.Exec(query)
-	if err != nil{
-		fmt.Println(err)
+	fmt.Println("server runing at http://localhost:8080")
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println(err, "we cant serve")
+		return
 	}
 }
-
-
-
-
-
-
-
-
