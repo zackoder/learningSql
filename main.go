@@ -12,7 +12,6 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", controllers.Home)
 	db, err_db := sql.Open("sqlite3", "./data.db")
 	if err_db != nil {
 		fmt.Println(err_db)
@@ -20,7 +19,9 @@ func main() {
 	}
 	defer db.Close()
 	models.Create_table(db)
-
+	
+	http.HandleFunc("/", controllers.Home)
+	http.HandleFunc("/login",controllers.Login)
 	fmt.Println("server runing at http://localhost:8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
