@@ -1,0 +1,81 @@
+{
+    "posts": [
+      {
+        "postID": 1,
+        "userID": 101,
+        "content": "Just had a great day at the beach!",
+        "creationDate": "2023-10-01",
+        "likesCount": 15,
+        "comments": [
+          {
+            "commentID": 201,
+            "userID": 102,
+            "content": "Looks amazing! Wish I was there.",
+            "creationDate": "2023-10-02"
+          },
+          {
+            "commentID": 202,
+            "userID": 103,
+            "content": "What a beautiful sunset!",
+            "creationDate": "2023-10-02"
+          }
+        ],
+        "likes": [
+          {
+            "likeID": 301,
+            "userID": 104,
+            "creationDate": "2023-10-01"
+          },
+          {
+            "likeID": 302,
+            "userID": 105,
+            "creationDate": "2023-10-01"
+          }
+        ]
+      },
+      {
+        "postID": 2,
+        "userID": 102,
+        "content": "Loving the fall colors!",
+        "creationDate": "2023-10-03",
+        "likesCount": 20,
+        "comments": [
+          {
+            "commentID": 203,
+            "userID": 104,
+            "content": "The colors are stunning!",
+            "creationDate": "2023-10-04"
+          }
+        ],
+        "likes": [
+          {
+            "likeID": 303,
+            "userID": 106,
+            "creationDate": "2023-10-03"
+          }
+        ]
+      },
+      {
+        "postID": 3,
+        "userID": 103,
+        "content": "Excited for the weekend!",
+        "creationDate": "2023-10-04",
+        "likesCount": 10,
+        "comments": [
+          {
+            "commentID": 204,
+            "userID": 105,
+            "content": "Have a great time!",
+            "creationDate": "2023-10-04"
+          }
+        ],
+        "likes": [
+          {
+            "likeID": 304,
+            "userID": 107,
+            "creationDate": "2023-10-04"
+          }
+        ]
+      }
+    ]
+  }

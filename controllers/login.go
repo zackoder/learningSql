@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 
 	"forum/utils"
@@ -16,6 +17,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		user.Email = r.FormValue("email")
 		user.Password = r.FormValue("password")
 	}
-
-	utils.ExecuteTemplate(w, page, user)
+	utils.ExecuteTemplate(w, page, &user)
+	fmt.Println(user.Email)
+	fmt.Println(user.Password)
 }
