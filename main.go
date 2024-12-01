@@ -22,6 +22,7 @@ func main() {
 	
 	http.HandleFunc("/", controllers.Home)
 	http.HandleFunc("/login",controllers.Login)
+	http.HandleFunc("/register",controllers.Registration)
 	fmt.Println("server runing at http://localhost:8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {

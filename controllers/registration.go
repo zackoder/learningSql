@@ -2,24 +2,27 @@ package controllers
 
 import (
 	"net/http"
+
 	"forum/utils"
 )
 
-func Registration(w http.ResponseWriter, r http.Request) {
+type info struct {
+	Name      string
+	Username  string
+	Email     string
+	Password  string
+	Password2 string
+}
+
+func Registration(w http.ResponseWriter, r *http.Request) {
 	page := []string{"views/pages/register.html"}
-	var info struct{
-		Name string
-		Username string
-		Email string
-		Password string
-		Password2 string
+	var info info
+	if r.Method == "POST" {
+		info.Name = r.FormValue("name")
+		info.Username = r.FormValue("username")
+		info.Email = r.FormValue("email")
+		info.Password = r.FormValue("password")
+		info.Password2 = r.FormValue("password2")
 	}
-	if r.Method == "POST"{
-		 info.Name = r.PostFormValue("name")
-		 info.Username= r.PostFormValue("username")
-		 info.Email= r.PostFormValue("email")
-		 info.Password = r.PostFormValue("password")
-		 info.Password2 = r.PostFormValue("password2")
-	}
-	utils.ExecuteTemplate( w , page, &info)
+	utils.ExecuteTemplate(w, page, &info)
 }
