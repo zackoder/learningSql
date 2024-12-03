@@ -4,9 +4,9 @@
 
 <form action="/login" method="post">
     <label for="email">EMAIL:</label><br>
-    <input type="email" id="email" name="email" placeholder="enter your email"><br>
+    <input type="email" id="email" name="email" placeholder="enter your email" required><br>
     <label for="password">PASSWORD</label><br>
-    <input type="password" id="password" name="password" placeholder="setup your password "><br><br>
+    <input type="password" id="password" name="password" placeholder="setup your password " required><br><br>
     <input type="submit" value="Submit">
   </form> 
   {{.Email}}

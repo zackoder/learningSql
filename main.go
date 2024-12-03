@@ -19,14 +19,15 @@ func main() {
 	}
 	defer db.Close()
 	models.Create_table(db)
-	
+	fs := http.FileServer(http.Dir("./static"))
+    http.Handle("/static/", http.StripPrefix("/static", fs))
 	http.HandleFunc("/", controllers.Home)
 	http.HandleFunc("/login",controllers.Login)
 	http.HandleFunc("/register",controllers.Registration)
 	fmt.Println("server runing at http://localhost:8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
-		fmt.Println(err, "we cant serve")
+		fmt.Println(err, "we can't serve")
 		return
 	}
 }

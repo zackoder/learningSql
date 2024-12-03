@@ -3,15 +3,15 @@
 <h1>REGISTRATION</h1>
 <form action="/register" method="post">
     <label for="name">FULL NAME *</label><br>
-    <input type="text" id="name" name="name" placeholder="full name"><br>
+    <input type="text" id="name" name="name" placeholder="full name" required><br>
     <label for="username">USER NAME</label><br>
-    <input type="text" id="username" name="username" placeholder="username"><br>
+    <input type="text" id="username" name="username" placeholder="username" required><br>
     <label for="email">EMAIL *</label><br>
-    <input type="email" id="email" name="email" placeholder="enter your email here"><br>
-    <label for="password">PASSWORD</label><br>
-    <input type="password" id="password" name="password" placeholder="setup your password "><br><br>
-    <label for="password">PASSWORD</label><br>
-    <input type="password" id="password" name="password2" placeholder="repeat your password"><br><br>
+    <input type="email" id="email" name="email" placeholder="enter your email here" required><br>
+    <label for="password">PASSWORD *</label><br>
+    <input type="password" id="password" name="password" placeholder="setup your password "required><br><br>
+    <label for="password">PASSWORD*</label><br>
+    <input type="password" id="password" name="password2" placeholder="repeat your password" required><br><br>
     <input type="submit" value="Submit">
 </form>
 {{.Name}}
