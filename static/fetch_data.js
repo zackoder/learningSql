@@ -30,6 +30,19 @@ async function Get_All_Posts() {
         document.getElementById("posts").innerHTML = res
         
     }
- 
-Get_All_Posts();
- 
+
+    
+    Get_All_Posts();
+
+    const trying = async () => {
+        try {
+            let f = await fetch("/testing")
+            let r = await f.json()
+            console.log(r)
+            
+        }catch(err) {
+            console.error(err)
+        }
+
+    }
+    trying()

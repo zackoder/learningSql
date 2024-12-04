@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"forum/utils"
@@ -24,5 +25,11 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 		info.Password = r.FormValue("password")
 		info.Password2 = r.FormValue("password2")
 	}
+
 	utils.ExecuteTemplate(w, page, &info)
+}
+
+func Test(w http.ResponseWriter, r *http.Request) {
+	var info info
+	json.NewEncoder(w).Encode(&info)
 }
