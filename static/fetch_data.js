@@ -12,14 +12,17 @@ async function Get_Data(url, dataArray) {
 async function Get_All_Posts() {
     let postsData = [];
     let res = "";
-    await Get_Data("https://jsonplaceholder.typicode.com/posts", postsData);
-    postsData = postsData[0]
+    await Get_Data("https://dummyjson.com/posts", postsData);
+    
+    postsData = postsData[0].posts
         for (let i = 0; i < postsData.length; i++) {
+            
             res += `
             <div>
-                <div>${postsData[i].title}</div><br><br>
-                <div>${postsData[i].body}</div>
-                
+                <div>${postsData[i].title}</div><br>
+                <div>${postsData[i].body}</div><br> 
+                <div>${postsData[i].tags}</div><br> 
+                <div>${postsData[i].reactions.likes} ${postsData[i].reactions.dislikes}</div><br><br><br>  
 
             </div>
             `;
@@ -34,15 +37,15 @@ async function Get_All_Posts() {
     
     Get_All_Posts();
 
-    const trying = async () => {
-        try {
-            let f = await fetch("/testing")
-            let r = await f.json()
-            console.log(r)
+    // const trying = async () => {
+    //     try {
+    //         let f = await fetch("/testing")
+    //         let r = await f.json()
+    //         console.log(r)
             
-        }catch(err) {
-            console.error(err)
-        }
+    //     }catch(err) {
+    //         console.error(err)
+    //     }
 
-    }
-    trying()
+    // }
+    // trying()

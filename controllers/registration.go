@@ -7,17 +7,11 @@ import (
 	"forum/utils"
 )
 
-type info struct {
-	Name      string
-	Username  string
-	Email     string
-	Password  string
-	Password2 string
-}
+
 
 func Registration(w http.ResponseWriter, r *http.Request) {
 	page := []string{"views/pages/register.html"}
-	var info info
+	var info utils.Info
 	if r.Method == "POST" {
 		info.Name = r.FormValue("name")
 		info.Username = r.FormValue("username")
@@ -30,6 +24,6 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 }
 
 func Test(w http.ResponseWriter, r *http.Request) {
-	var info info
+	var info utils.Info
 	json.NewEncoder(w).Encode(&info)
 }
