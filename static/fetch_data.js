@@ -13,7 +13,6 @@ async function Get_All_Posts() {
     let postsData = [];
     let res = "";
     await Get_Data("https://dummyjson.com/posts", postsData);
-    
     postsData = postsData[0].posts
         for (let i = 0; i < postsData.length; i++) {
             
@@ -22,11 +21,10 @@ async function Get_All_Posts() {
                 <div class="card-title">${postsData[i].title || "No Title"}</div>
                 <div class="card-body">${postsData[i].body}</div><br> 
                 <div class="card-tags">${postsData[i].tags.join(', ') || "No Tags"}</div>
-                 <div class="card-score">
+                 <div class="card-like-dislike">
                     <b>⬆</b>${postsData[i].reactions.likes || 0} | 
                     <b>⬇</b>${postsData[i].reactions.dislikes || 0}
-                </div> 
-
+                    </div> 
             </div>
             `;
 

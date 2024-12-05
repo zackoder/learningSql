@@ -12,5 +12,6 @@ type ErrorResponse struct {
 func MessageError(w http.ResponseWriter, r *http.Request, code int, msg string) {
 	msg_err := &ErrorResponse{ErrorNum: code, ErrorType: msg}
 	page := []string{"views/pages/errr.html"}
+	w.WriteHeader(code)
 	ExecuteTemplate(w, page, msg_err)
 }

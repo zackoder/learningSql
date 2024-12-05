@@ -2,14 +2,22 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"forum/utils"
 )
 
-
-
 func Registration(w http.ResponseWriter, r *http.Request) {
+	html := ` 
+    <script>
+    function ShowAlert(){
+        alert("the first and the second password should be a match")
+    }
+    ShowAlert();
+    </script> 
+	` 
+ 
 	page := []string{"views/pages/register.html"}
 	var info utils.Info
 	if r.Method == "POST" {
@@ -19,7 +27,9 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 		info.Password = r.FormValue("password")
 		info.Password2 = r.FormValue("password2")
 	}
-
+	if info.Password != info.Password2 {
+		fmt.Fprint(w , html)
+	}
 	utils.ExecuteTemplate(w, page, &info)
 }
 
