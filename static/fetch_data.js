@@ -18,11 +18,14 @@ async function Get_All_Posts() {
         for (let i = 0; i < postsData.length; i++) {
             
             res += `
-            <div>
-                <div>${postsData[i].title}</div><br>
-                <div>${postsData[i].body}</div><br> 
-                <div>${postsData[i].tags}</div><br> 
-                <div>${postsData[i].reactions.likes} ${postsData[i].reactions.dislikes}</div><br><br><br>  
+            <div class="card" onclick="openAlert(${i})">
+                <div class="card-title">${postsData[i].title || "No Title"}</div>
+                <div class="card-body">${postsData[i].body}</div><br> 
+                <div class="card-tags">${postsData[i].tags.join(', ') || "No Tags"}</div>
+                 <div class="card-score">
+                    <b>⬆</b>${postsData[i].reactions.likes || 0} | 
+                    <b>⬇</b>${postsData[i].reactions.dislikes || 0}
+                </div> 
 
             </div>
             `;
@@ -31,6 +34,7 @@ async function Get_All_Posts() {
             
         }
         document.getElementById("posts").innerHTML = res
+        
         
     }
 
