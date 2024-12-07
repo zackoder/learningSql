@@ -11,6 +11,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+
 func main() {
 	db, err_db := sql.Open("sqlite3", "./data.db")
 	if err_db != nil {
@@ -24,7 +25,6 @@ func main() {
 	http.HandleFunc("/", controllers.Home)
 	http.HandleFunc("/login", controllers.Login)
 	http.HandleFunc("/register", controllers.Registration)
-	http.HandleFunc("/testing", controllers.Test)
 	fmt.Println("server runing at http://localhost:8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {

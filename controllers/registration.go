@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -9,15 +8,8 @@ import (
 )
 
 func Registration(w http.ResponseWriter, r *http.Request) {
-	html := ` 
-    <script>
-    function ShowAlert(){
-        alert("the first and the second password should be a match")
-    }
-    ShowAlert();
-    </script> 
-	` 
- 
+	html := `<script>alert("%s")</script> `
+
 	page := []string{"views/pages/register.html"}
 	var info utils.Info
 	if r.Method == "POST" {
@@ -28,12 +20,17 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 		info.Password2 = r.FormValue("password2")
 	}
 	if info.Password != info.Password2 {
-		fmt.Fprint(w , html)
+		msj := fmt.Sprintf(html, "password error")
+		fmt.Fprint(w, msj)
 	}
+	// if !isValidEmail(info.Email) {
+	// 	msj2 := fmt.Sprintf(html, "incorect email format")
+	// 	fmt.Fprint(w, msj2)
+	// }
 	utils.ExecuteTemplate(w, page, &info)
 }
 
-func Test(w http.ResponseWriter, r *http.Request) {
-	var info utils.Info
-	json.NewEncoder(w).Encode(&info)
-}
+// func isValidEmail(email string) bool {
+// 	re := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
+// 	return re.MatchString(email)
+// }

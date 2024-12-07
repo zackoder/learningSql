@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=[YOUR-API-KEY]"></script>
     <link rel="stylesheet" href="/static/style.css">
-
     {{template "style"}}
-    <title>{{template "title"}}</title>
-</head>
-<body>
 
-    {{template "content"}}
+
+    <title>{{template "title"}}</title>
+
+</head>
+
+<body>
+    {{block "navbar" .}}{{end}}
+    <div class="content">
+
+        {{template "content"}}
+   </div>
     
 </body>
 </html>
